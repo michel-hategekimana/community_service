@@ -1,0 +1,29 @@
+{
+  "name": "community_service",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "project of community service",
+  "homepage": "https://github.com/michel-hategekimana/community_service#readme",
+  "bugs": {
+    "url": "https://github.com/michel-hategekimana/community_service/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michel-hategekimana/community_service.git"
+  },
+  "license": "ISC",
+  "author": "Michel Hategekimana",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
