@@ -83,6 +83,16 @@ class Controller {
       return res.status(200).json({message:"all users deleted successfully",users})
     }
 
-  };
+  }; 
+  updateUser=async(req,res)=>{
+    const id=req.params.id
+    const user= await User.findByIdAndUpdate(id,req.body,{new:true})
+    if(!user){
+      res.status(404).json({message:"user not found"})
+    }else{
+      res.status(201).json({message:"updated successful",user})
+    }
+
+  }
 }
 export default Controller;
