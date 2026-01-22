@@ -35,7 +35,7 @@ import mongoose from "mongoose";
     }).populate({
         path:"provider",select:"names email"
     })
-    next()
+    // next()
   })
   const Service=mongoose.model("Service",serviceSchema)
   export default Service

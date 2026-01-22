@@ -13,5 +13,5 @@ import mongoose from "mongoose";
     }
 
   })
-  const Category=mongoose.model("Catecory",categorySchema)
+  const Category=mongoose.model("Category",categorySchema)
   export default Category
