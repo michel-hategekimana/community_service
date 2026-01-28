@@ -5,7 +5,7 @@ export function VerifyAcces(passRole) {
     const token = req.headers["auth-token"];
   
     if (!token) {
-      return res.status(404).json({ message: "no token provided" });
+      return res.status(404).json({ message: "Not authorized" });
     } else {
       try {
         const verifyToken = jwt.verify(token, process.env.SECRET_KEY, {expiresIn: "1d"});

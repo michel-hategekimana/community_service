@@ -15,11 +15,17 @@ class ServiceController{
             if(!userId){
                 return res.status(401).json({message:"user not found"})
             }
+              const newService=await Service.findOne({title})
+              if(newService){
+                return res.status(403).json({message:"service already exist"})
+              }
+
                 let service= await Service.create({
                     title,
                     description,
                     categorys,
                     price,
+            
                     provider:userId
 
                 })

@@ -4,11 +4,16 @@ import Category from "../model/categoryModel.js"
 
 class CategoryController{
   static CreateCategory=async(req,res)=>{
-        const category=await Category.create(req.body)
-        if(!category){
+    const categoryName=req.body
+    const category= await Category.findOne(categoryName)
+    if(category){
+        return res.status(403).json({message:"Category already exist"})
+    }
+        const newCategory=await Category.create(req.body)
+        if(!newCategory){
             return res.status(404).json({message:"category not created"})
         }else{
-            return res.status(201).json({message:"category created",category})
+            return res.status(201).json({message:"category created",newCategory})
         }
 
     };

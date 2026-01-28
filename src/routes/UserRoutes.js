@@ -9,7 +9,7 @@ const router = express.Router()
 const controller = new Controller(); 
 router.post("/signup",EmailExist ,controller.signup);
 router.post("/login",controller.login)
-router.get("/users",VerifyAcces("admin"),controller.getAllUsers)
+router.get("/users",controller.getAllUsers)
 router.get("/:id",controller.findOneUser)
 router.delete("/:id",controller.deleteOneUser)
 router.delete("/users",controller.deleteAllUsers)

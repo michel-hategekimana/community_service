@@ -37,5 +37,5 @@ import mongoose from "mongoose";
     })
     // next()
   })
-  const Service=mongoose.model("Service",serviceSchema)
-  export default Service
+  const ServiceBooking=mongoose.model("Service",serviceSchema)
+  export default ServiceBooking

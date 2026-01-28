@@ -38,8 +38,8 @@ const bookingSchema =new mongoose.Schema({
 })
 bookingSchema.pre(/^find/,function(next){
     this.populate([
-        {path:"client",select:"names email"},
-        {path:"service",select:"title"}
+        {path:"clientId",select:"names email"},
+        {path:"serviceI",select:"title"}
     ])
 })
 

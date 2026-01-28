@@ -10,6 +10,9 @@ const db=process.env.DATABASE
 
 const app= express()
 app.use(bodyParser.json())
+
+
+
 app.use("/api/v1",router)
 
 const port=process.env.PORT || 3000
@@ -20,3 +23,9 @@ app.listen(port,()=>{
 
 mongoose.connect(db).then(()=>{console.log("Database connected successfully")})
 .catch((error)=>{console.log(`Error is ${error}`)})
+
+app.use((req,res)=>{
+    return res.status(200).json({
+        status:200,
+        message:"welcome to our community service"})
+})

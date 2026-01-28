@@ -7,8 +7,8 @@ const router=express.Router()
 router.post("/create",VerifyAcces("provider"),CategoryController.CreateCategory)
 router.get("/categories",CategoryController.GetAllCategories)
 router.get("/:id",CategoryController.getOneCategory)
-router.delete("/:id",CategoryController.deleteOneCategory)
+router.delete("/:id",VerifyAcces("provider"),CategoryController.deleteOneCategory)
 router.patch("/:id",CategoryController.updateCategory)
-router.delete("/categories/delete",CategoryController.deleteAllCategories)
+router.delete("/categories/delete",VerifyAcces("provider"),CategoryController.deleteAllCategories)
 
 export default router
