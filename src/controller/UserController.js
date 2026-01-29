@@ -1,6 +1,7 @@
 import User from "../model/UserModel.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
+
+import { generateToken } from "../utils/jwtUtils.js";
 
 class Controller {
   signup = async (req, res) => {
@@ -30,13 +31,15 @@ class Controller {
     const { email, password } = req.body;
     const user = await User.findOne({email})
     if(!user){
-      return res.status(404).json({message:"Invalid email "})
+      return res.status(404).json({message:"Invalid email or password "})
     }else{
+
       const comparePasword = bcrypt.compareSync(password,user.password)
       if(!comparePasword){
-        return res.status(404).json({message:"Invalid password"})
+        return res.status(404).json({message:"Invalid emai or password"})
       }else{
-        const token = jwt.sign({user:user},process.env.SECRET_KEY,{expiresIn:"1d"})
+        const token= generateToken(user?._id)
+        // const token = jwt.sign({user:user},process.env.SECRET_KEY,{expiresIn:"1d"})
         return res.status(201).json({message:"Login successfully",token})
       }
     }
