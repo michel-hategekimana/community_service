@@ -1,6 +1,9 @@
 
 import Category from "../model/categoryModel.js"
 import Service from "../model/serviceModel.js"
+import User from "../model/UserModel.js";
+import { sendEmail } from "../services/sendEmail.js";
+
 
 
 class ServiceController{
@@ -29,10 +32,25 @@ class ServiceController{
                     provider:userId
 
                 })
+
                   service=await service.populate([
                         {path:"categorys",select:"categoryName"},
                         {path:"provider",select:"names email"}
                     ])
+
+                    const users=await User.find({},"email")
+                    if(users.length ===0){
+                        return res.status(404).json({status:404,message:"users not found"})
+                    }
+                        users.map(async(user)=>{
+                            sendEmail({
+                                receiverEmail:user.email,
+                                title:req.body.title,
+                                serviceDesciption:req.body.description
+                            })
+
+                        })
+                    
                     return res.status(201).json({message:"service created successfull",service})
                 
 
